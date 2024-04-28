@@ -56,7 +56,7 @@ async function run() {
             res.send(result)
         })
 
-        app.put('/products:id', async (req, res) => {
+        app.put('/products/:id', async (req, res) => {
             const id = req.params.id;
             const filter = { _id: new ObjectId(id) }
             const options = { upsert: true }
@@ -74,8 +74,8 @@ async function run() {
                     processing_time : updateProducts.processing_time
                 }
             }
-
             const result = await productCollection.updateOne(filter,products,options)
+            console.log(result);
             res.send(result)
         })
 
