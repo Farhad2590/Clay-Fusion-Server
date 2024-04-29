@@ -37,7 +37,12 @@ async function run() {
             res.send(result)
         })
 
-        
+        app.get('/subCategories', async (req, res) => {
+            const cursor = categoryCollection.find();
+            const result = await cursor.toArray();
+            console.log(result);
+            res.send(result)
+        })
 
         app.get('/myProduct/:email', async (req, res) => {
             console.log(req.params.email);
